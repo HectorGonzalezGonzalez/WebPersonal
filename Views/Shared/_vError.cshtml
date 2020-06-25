@@ -1,0 +1,18 @@
+﻿@model Models.Mensaje
+
+@if (Model.Error != "")
+{
+    <script>
+            alertSw('info', '@Model.Error', 'No se guardaron los datos');
+    </script>
+    Model.Error = "";
+
+}
+@*else if (Model.Toast != "")
+{
+    <script>
+            toast_success('@Model.Toast');
+    </script>
+    Model.Toast = "";
+}*@
+

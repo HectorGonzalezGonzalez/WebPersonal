@@ -1,0 +1,254 @@
+﻿body {
+    padding: 0px;
+    background: #4a465b;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    /*margin-top: 20px;*/
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+/*inicio Mene*/
+.menuPrincipal {
+    background: #76222f;
+}
+
+.nav-link {
+    color: #FFF !important;
+}
+
+.navbar-toggler {
+    background: #FFF;
+}
+/*Fin Mene*/
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.textoColorToast {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.btnAdd {
+    padding: 10px;
+    background: #191970;
+    color: #FFF;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+    .btnAdd:hover {
+        color: yellow;
+    }
+/*h2{
+    text-align:center;
+}*/
+.modal-header {
+    background: #74242c;
+    color: #FFF;
+}
+
+.ControlPer {
+    max-width: 100%;
+}
+
+footer {
+    margin-top: 60px;
+    background: #000;
+    text-align: center;
+    padding: 10px 10px;
+    /*Para que el footer siempre este hasta abajo y no suba*/
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+    footer span {
+        color: #FFF;
+    }
+/*INICIO TABLE*/
+th {
+    text-align: center;
+}
+
+.table tr:hover { /*al pasar el mouse cambia de color*/
+    background: #f6f5bf !important;
+}
+/*FIN TABLE*/
+
+
+
+/*MY STYLE*/
+
+
+.contenido {
+    margin: 0px auto;
+    max-width: 1200px;
+    min-height: 600px;
+    height: 100%;
+    padding: 20px;
+    background: #FFF;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content:start;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+    .contenido .section_titulo {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        text-align: left;
+        display: flex;
+        flex-wrap: wrap;        
+    }
+
+.div_titulo {
+    width: 80%;
+    height: 100%;
+    /*background:purple;*/
+}
+
+.divBuscar {
+    display: inline-block;
+    background: #ececec;
+    padding: 5px;
+}
+
+.div_add {
+    width: 20%;
+    height: 100%;
+    text-align: right;
+    /*background:orange;*/
+}
+.contenido .seccion_contenido {
+    width: 100%;
+    height: 100%;    
+    margin-top:30px;
+}
+
+
+
+
+
+
+
+.section_tema {
+    margin: 15px 5px;
+    background: #FFF;
+    display: inline-block;
+    width: 170px;
+    height: 260px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+
+    .section_tema img {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #76222f;
+    }
+
+    .section_tema .div_linea {
+        margin: 10px 0px;
+        border-top: 3px solid blue;
+    }
+
+.Link_tema {
+    display: inline-block;
+    padding: 10px;
+    background: #0A0FAE;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+}
+
+    .Link_tema:hover {
+        text-decoration: none;
+        background: #76222f;
+        color: #FFF;
+    }
+
+.img_Preview img {
+    margin: 20px 0px;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+}
+.section_ejemplo {
+    width: 30%;
+    border: 1px solid #76222f;
+    padding: 10px;
+}
+.section_ejemploDetalle {
+    width:100%;        
+    height:100%;
+}
+.navlink{
+    color:#000 !important;
+}
+.section_navs{
+    margin-bottom: 20px !important;
+}
+.section_lstSubtema {
+    background: #161f26;
+    width: 30%;
+    height:100%;
+    padding: 0px;
+    height: 100%;
+    position: absolute;
+    /*bottom:50px;*/
+    margin-bottom:25px;
+    
+    overflow: scroll;
+    /*top: 0;
+    bottom: 0;*/
+}
+.section_ejample {
+    width: 70%;
+    position: absolute;
+    /*top:57px;*/
+    right: 0;
+    /*bottom: 0;*/
+    background:#FFF;    
+}
+
+
+#div_ejemplo h4{
+    padding:10px;
+    background:#000;
+    color:#FFF;    
+    /*margin-bottom:20px;*/
+    margin:0px;
+}
+#div_ejemplo h4 b{
+    color:orange;
+    font-size:16px;
+}
+#div_ejemplo .form-horizontal{    
+    margin-top:20px;
+}
+#div_ejemplo .section_navs {
+    background: orange;
+}
+
+/*.contenido*/
+@media screen and (max-width:800px){
+    .contenido {
+        min-width: 200px;
+        /*background: orange !important;*/
+    }
+}

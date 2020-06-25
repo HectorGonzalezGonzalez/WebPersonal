@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Models.Ejemplo>
+<i class="fas fa-plus-square"></i>@Ajax.ActionLink("Agregar Ejemplo", "Create", "Ejemploes", new { idSubtema = ViewData["subtemaId"].ToString() }, new AjaxOptions()
+                             {
+                                 HttpMethod = "GET",
+                                 UpdateTargetId = "div_ejemplo",
+                                 InsertionMode = InsertionMode.Replace,
+                                 OnBegin = "LimpiarDiv_ejemplo",
+                                 LoadingElementId = "divCargar"
+                             }, new { @class = "li_addEjemplo" })
+
+@if (Model.Count() > 0)
+{
+    <ul>
+        @foreach (Models.Ejemplo item in Model)
+        {
+        <li>
+            <i class="fab fa-buffer"></i>@Ajax.ActionLink(item.Nombre, "Edit", "Ejemploes", new { id = item.Id }, new AjaxOptions()
+                                    {
+                                        HttpMethod = "GET",
+                                        UpdateTargetId = "div_ejemplo",
+                                        InsertionMode = InsertionMode.Replace,
+                                        OnBegin = "LimpiarDiv_ejemplo",
+                                        LoadingElementId = "divCargar"
+                                    })
+
+            
+
+            <ul>
+                <li>
+                    <div class="div_EjemDet">
+                        <i class="fas fa-plus-square"></i>@Ajax.ActionLink("Agregar Codigo", "ListaEjemploDetalle", "EjemploDetalles", new { idEjemplo = item.Id, id = -1 }, new AjaxOptions()
+                                                     {
+                                                         HttpMethod = "GET",
+                                                         UpdateTargetId = "div_ejemplo",
+                                                         InsertionMode = InsertionMode.Replace,
+                                                         OnBegin = "LimpiarDiv_ejemplo",
+                                                         LoadingElementId = "divCargar"
+                                                     })
+                    </div>
+                </li>
+               
+                    <li>
+                        <div id="div_EjemDet_@item.Id" class="div_EjemDet">                      
+                            @Html.Partial("_ArbolEjemploDetalle", item.EjemploDetalle)
+                        </div>
+                    </li>
+                
+            </ul>
+        </li>
+
+        }
+    </ul>
+}
+else
+{
+
+    <span>No se encontraron registros</span>
+}
+

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index Test";
+}
+
+<h2>TEST AJAX</h2>
+@Html.TextBox("txt_cantidad_uno")
+@Html.TextBox("txt_cantidad_dos")
+<input type="button" value="Sumar" id="btnSumar" />
+Resultado:<span id="div_resutado"></span>
+
+<script>
+    $(function () {
+        $("#btnSumar").click(function () {
+            var url = "@Url.Action("Sumar","Test")";
+            var cantidadUno = $("#txt_cantidad_uno").val();
+            var cantidadDos = $("#txt_cantidad_dos").val();
+            /*Parametros a enviar*/
+            var data = { cantidadUno: cantidadUno, cantidadDos: cantidadDos };
+            $.post(url, data).done(function (data) {
+                //Se ejecuta si la operacon fue un exito
+                $("#div_resutado").html(data);
+            }).fail(manejarErrorAjax).always(function () {
+                //Esta funcion siempre se ejecuta
+            });
+        });
+        function manejarErrorAjax(err) {
+            alert(err.responseText);
+        }
+    });
+</script>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Models.Subtema>
+    
+    <link href="~/Content/styleArbol.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("_modalPlantilla")
+<style>
+    body{
+        background:#FFF;
+    }
+    /*.body-content{
+        margin:0px;
+        padding:0px;
+        width:100% !important;
+        background:purple;
+    }*/
+    .contenido {
+        /*background: orange;*/
+        width: 100% !important;
+        padding: 0px;
+        margin: 0px;
+        box-shadow:none;
+    }    
+</style>
+
+
+    <section class="contenido">
+
+        
+
+        <section class="section_lstSubtema">
+            <section class="section_principal">
+                <h2>@ViewData["NombreTema"].ToString()</h2>
+                <div class="div_buscarArbol">
+                    <div class="div_txtBuscar">
+                        <input type="text" placeholder="Buscar Tema" class="form-control">
+                    </div>
+                    <div class="div_btnBuscar">
+                        <input type="submit" value="Buscar" class="btn btn-primary">
+                    </div>
+
+                </div>
+            </section>
+            @Ajax.ActionLink("Agregar Subtema", "Create", "Subtemas", new { idTema = @ViewData["idTema"].ToString() }, new AjaxOptions()
+       {
+           HttpMethod = "GET",
+           UpdateTargetId = "div_ejemplo",
+           InsertionMode = InsertionMode.Replace,
+           OnBegin = "LimpiarDiv_ejemplo",
+           LoadingElementId = "divCargar",
+           LoadingElementDuration = 1000
+       },new {@class="LinkAddSubtena" })
+
+            <div id="div_arbol">
+                @Html.Partial("_LstArbol", Model)
+            </div>
+        </section>
+        <section class="section_ejample">
+            <div id="div_ejemplo"></div>
+            <div id="divCargar" style="display:none;">
+                <img src="~/Content/img/cargando.gif" />
+            </div>
+        </section>
+    </section>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+@*<script src="~/JS/modal/Subtema.js"></script>*@

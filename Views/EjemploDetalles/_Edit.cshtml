@@ -1,0 +1,76 @@
+﻿@model Models.EjemploDetalle
+
+    <script src="~/JS/AjaxCrud/ajaxEjemploDetalle.js"></script>
+<!--Inicio Librerias formato de codigo en el textarea (codemirror descargado en nuget)-->
+<script src="~/Scripts/codemirror-2.37/lib/codemirror.js"></script>
+<link href="~/Scripts/codemirror-2.37/lib/codemirror.css" rel="stylesheet" />
+<script src="~/Scripts/codemirror-2.37/mode/xml/xml.js"></script>
+<script src="~/Scripts/codemirror-2.37/mode/javascript/javascript.js"></script>
+
+<script src="~/Scripts/codemirror-2.37/mode/htmlmixed/htmlmixed.js"></script>
+<script src="~/Scripts/codemirror-2.37/mode/clike/clike.js"></script>
+<link href="~/Content/Codemirror.css" rel="stylesheet" />
+<!--Fin Librerias formato de codigo en el textarea-->
+@*<script>
+    function actualizarArbolEjemploDetalle(EjemploId) {
+        $("#div_EjemDet_" + EjemploId).empty();
+    var url = "@Url.Action("LstEjemploDetalleArbol", "EjemploDetalles")";
+        var data = { EjemploId: EjemploId};
+        $.get(url, data).done(function (data) {
+            $("#div_EjemDet_" + EjemploId).append(data);
+    }).fail(manejarErrorAjax);
+    }
+</script>*@
+
+@*@using (Ajax.BeginForm("Edit", "EjemploDetalles", new AjaxOptions()
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "div_ejemplo",
+    InsertionMode = InsertionMode.Replace,
+    LoadingElementId = "divCargar",
+    OnSuccess= "actualizarArbolEjemploDetalle("+Model.EjemploId+")",
+    LoadingElementDuration = 2000
+}))*@
+@using (Html.BeginForm("Edit", "EjemploDetalles", FormMethod.Post,new {id= "frmExampleDet" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.EjemploId)
+    @Html.HiddenFor(model => model.Fecha_creo)
+    @Html.HiddenFor(model => model.UsrCreoId)
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">            
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @placeholder = "Lenguaje", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Codigo)
+                @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="Actualizar" class="btn btn-primary" />
+                @Ajax.ActionLink("Eliminar", "Delete", "EjemploDetalles", new { id = Model.Id }, new AjaxOptions() {
+               HttpMethod = "GET",
+               UpdateTargetId = "div_ejemplo",
+               InsertionMode = InsertionMode.Replace,
+               LoadingElementId = "divCargar",
+               OnBegin = "LimpiarDiv_ejemplo",
+               OnSuccess = "actualizarArbolEjemploDetalle(" + Model.EjemploId + ")",
+               LoadingElementDuration = 2000
+           })
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/JS/CodeMirror/codeMirorTextTarea.js"></script>

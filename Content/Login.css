@@ -1,0 +1,139 @@
+﻿*{
+	padding: 0px;
+	margin: 0px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+body{
+	background:#76222f;
+}
+.contenedor{
+	width: 100%;
+	height: 100%;
+	background:#F2f2f2;
+	display: flex;
+}
+.login{
+	width:30%;	
+	background:#76222f;
+	color: #FFF;	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;	
+}
+.fondoD{
+	width:70%;	
+	position: absolute;
+	top: 0;
+	right:0;
+	bottom: 0;	
+	background: lightblue url("/Content/img/fondoLoginAzul.png");    
+	background-size: cover;    
+}
+h4{
+    color:orange;
+}
+hr{
+    margin-bottom:20px;
+}
+label{
+    color:blue;    
+}
+.login .fondoLogin{
+	 background: #FFF; 
+	/*background-color: rgba(255,255,255,255);*/
+	margin:20px 20px;	
+	border-radius:20px;
+	padding:10px 30px 20px 30px;		
+}
+input[type="text"],input[type="password"]{
+	padding: 10px;
+	border-radius:10px;
+	/*margin-bottom: 20px;*/
+	border:#0A0FAE solid 1px;
+	width:100%;
+}
+.text-danger{
+    color:red;
+    display:inline-block;
+    width:100%;
+    margin-bottom: 20px;
+}
+input[type="text"]:focus,input[type="password"]:focus{	
+	outline: none;/*quita linea de contorno*/	
+	border: 2px solid #76222f !important;	
+}
+input[type="submit"]{
+	padding: 10px;	
+	width:100%;
+	border-radius: 10px;
+	background: #0A0FAE;
+	color: #FFF;
+}
+input[type="submit"]:hover{
+	outline: none;/*quita linea de contorno*/
+	/*opacity:.7;*/
+    background:#000;
+}
+input[type="checkbox"]{
+    margin-right:5px;
+    margin-bottom:20px;
+}
+
+
+.section_logo{	
+	width: 100%;	
+	padding-top:20px;
+	/*padding-bottom:10px;*/
+	text-align:center;		
+}
+.section_logo img{
+	width:70%;	    	
+}
+.section_logo .div_linea{
+	width: 100%;
+	border-top:3px solid orange;
+}
+.fondoLogin .div_imgUser{
+	width: 100%;	
+	text-align: center;
+	/*background:orange;*/
+}
+
+
+.section_developer{
+	width: 100%;
+	background: #4a465b;
+	padding: 10px;	
+	text-align: center;
+	font-size:30px;			
+}
+.section_developer label{
+	color: orange;
+}
+
+
+@media screen and (max-width:800px){	
+	body{
+		background:orange;
+	}
+	.contenedor{
+		/*display: flex;*/
+		/*flex-direction: column;*/			
+	}
+	.login{
+		width: 100%;	
+		/*position:inherit;*/	
+	}
+	.fondoD{
+		width: 100%;		
+        display:none;
+		/*position:inherit;*/
+	}
+	.section_developer{
+		margin-bottom: 20px;
+	}
+}

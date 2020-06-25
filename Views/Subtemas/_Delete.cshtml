@@ -1,0 +1,36 @@
+﻿@model Models.Subtema
+@{
+    Layout = null;
+}
+<h4>¿Está seguro de eliminar el subtema?</h4>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+    </dl>
+
+    @using (Ajax.BeginForm("DeleteConfirmed", "Subtemas", new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "div_arbol",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "LimpiarDiv_ejemplo",
+        LoadingElementId = "divCargar"
+
+    }))
+    {
+        @Html.HiddenFor(x=>x.Id)
+        <div class="modal-footer">
+            <input type="submit" value="Eliminar" class="btn btn-primary" />
+        </div>
+    }
+</div>
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

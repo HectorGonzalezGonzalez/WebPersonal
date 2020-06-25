@@ -1,0 +1,47 @@
+﻿@model Models.Tema
+
+@{
+    Layout = null;
+}
+    <h4>¿Está seguro de eliminar el tema?</h4>
+<div>    
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            <div id="imagePreview" class="img_Preview">
+                @if (Model.img != "" && Model.img != null)
+                {
+                    <img src="~/RECURSOS/IMG/TEMA/@Model.Id/@Model.img">
+                }
+            </div>
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    <input type="submit" value="Eliminar" class="btn btn-primary" />
+</div>
+    }
+</div>

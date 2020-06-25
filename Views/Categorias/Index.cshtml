@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Models.Categoria>
+
+@{
+    ViewBag.Title = "Lista de Categorías";
+}
+@Html.Partial("_Alert")
+@Html.Partial("_modalPlantilla")
+
+
+<div class="contenido" style="width:80%;margin:auto;">
+  
+
+    <section class="section_titulo">
+        <div class="div_titulo">
+            <h2>Lista de Categorías</h2>
+            @*<div class="divBuscar">
+                
+            </div>*@
+        </div>
+        <div class="div_add">
+            <button id="btnNuevo" type="button" class="btnAdd" data-toggle="modal" data-target="#myModal">
+                <i class="fas fa-plus-circle"></i> Agregar Categoría
+            </button>
+        </div>
+    </section>
+
+
+    <table class="table table-bordered table-striped" align="center">
+        <thead class="thead-dark">
+            <tr>
+                <th width="10%">
+                    NO.
+                </th>
+                <th width="50%">
+                    NOMBRE
+                </th>
+                <th width="10">
+                    ESTATUS
+                </th>
+
+                <th colspan="2" width="30%"></th>
+            </tr>
+        </thead>
+        @{
+            int cont = 0;
+        }
+        @foreach (var item in Model)
+        {
+            cont += 1;
+            <tr>
+                <td align="center">
+                    <b>@cont.ToString("00")</b>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td align="center">
+                    <a href="#myModal" class="btnEditar" data-toggle="modal" data-id="@item.Id"><i class="fas fa-edit"></i> Editar</a>
+                </td>
+                <td align="center">
+                    <a href="#myModal" class="btnEliminar" data-toggle="modal" data-id="@item.Id"><i class="fas fa-trash"></i> Eliminar</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script src="~/JS/modal/Categoria.js"></script>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Models.EjemploDetalle>
+
+@{     
+    string classActive = "";
+    int id = Convert.ToInt32(ViewData["id"]);
+    if (id==-1)
+    {
+        classActive = "active";        
+    }
+}
+
+    <h4>@ViewData["NombreTema"].ToString() / @ViewData["nombreSubtema"].ToString() / <b>Código</b></h4>
+    <section class="section_ejemploDetalle">
+        <section class="section_navs">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    @Ajax.ActionLink("Nuevo", "Create", "EjemploDetalles", new { idEjemplo = ViewData["Ejemplo_id"].ToString() }, new AjaxOptions()
+                    {
+                   HttpMethod = "GET",
+                   UpdateTargetId = "div_ejemploDet",
+                   InsertionMode = InsertionMode.Replace
+               }, new { @class = "nav-link navlink " + classActive })
+                </li>
+
+                @foreach (var item in Model)
+                {
+                    classActive = "";
+                    if (id > 0)
+                    {
+                        if (id == item.Id)
+                        {
+                            classActive = "active";
+                        }
+                    }
+                    <li class="nav-item">
+                        @Ajax.ActionLink(item.Nombre, "Editar", "EjemploDetalles", new { @id = item.Id }, new AjaxOptions()
+                        {
+                       HttpMethod = "GET",
+                       UpdateTargetId = "div_ejemploDet",
+                       InsertionMode = InsertionMode.Replace
+                   }, new { @class = "nav-link navlink " + classActive })
+                    </li>
+
+                }
+            </ul>
+        </section>
+        
+        <div id="div_ejemploDet" style="margin-bottom:90px">
+            @{
+                if (id == -1)
+                {
+                    Models.EjemploDetalle eDet = new Models.EjemploDetalle();
+                    eDet.EjemploId = Convert.ToInt32(ViewData["Ejemplo_id"]);
+                    @Html.Partial("_Create", eDet)
+                }
+                else
+                {
+                    if (id > 0)
+                    {
+                        @Html.Action("Editar", new { id = id })
+                    }
+                }
+            }
+        </div>
+    </section>
+
+<script>
+$(document).ready(function(){
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
+});
+</script>

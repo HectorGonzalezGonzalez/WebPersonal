@@ -1,0 +1,17 @@
+﻿
+@if (string.IsNullOrEmpty(Session["_error"].ToString()) == false)
+{
+    <script>
+            alertSw('info', '@Session["_error"].ToString()', 'No se guardaron los datos');
+    </script>
+    Session["_error"]= "";
+}
+else if (string.IsNullOrEmpty(Session["_toast"].ToString()) == false)
+{
+    <script>
+            toast_success('@Session["_toast"].ToString()');
+    </script>
+    Session["_toast"]= "";
+}
+
+

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Models.Subtema>
+<script src="~/JS/Arbol.js"></script>
+<script>
+    function mostrarDatosSubtemaDetalle(subtemaId) {
+        $("#divCargarArbol_" + subtemaId).slideDown(500);
+    var url = "@Url.Action("ArbolEjemplo","Ejemploes")";
+    var data = { subtemaId: subtemaId};
+        $.get(url, data).done(function (data) {
+            $("#div_arbol_ejemplo_" + subtemaId).empty();
+            $("#divCargarArbol_" + subtemaId).slideUp(500);
+        $("#div_arbol_ejemplo_"+subtemaId).append(data);
+    }).fail(manejarErrorAjax);
+}
+</script>
+
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="accordion-container">
+            <a href="#" id="link_acordion_@item.Id" class="accordion-titulo toggle-icon" onclick="acordeon(@item.Id)">@item.Nombre</a>
+
+            <div class="div_arbol_der">
+                @Ajax.ActionLink(" ", "Edit", "Subtemas", new { id = item.Id }, new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               UpdateTargetId = "div_ejemplo",
+               InsertionMode = InsertionMode.Replace,
+               OnBegin = "LimpiarDiv_ejemplo",
+               LoadingElementId = "divCargar",
+               LoadingElementDuration = 2000
+           }, new { @class = "fas fa-edit" })
+                @Ajax.ActionLink(" ", "Delete", "Subtemas", new { id = item.Id }, new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               UpdateTargetId = "div_ejemplo",
+               InsertionMode = InsertionMode.Replace,
+               OnBegin = "LimpiarDiv_ejemplo",
+               LoadingElementId = "divCargar",
+               LoadingElementDuration = 2000
+           }, new { @class = "fas fa-trash" })
+
+            </div>
+
+            <div class="accordion-content">
+                <div id="divCargarArbol_@item.Id" style="display:none;">
+                    <img src="~/Content/img/cargando.gif" />
+                </div>
+                <div id="div_arbol_ejemplo_@item.Id">
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    }
+
+}
+else
+{
+    <span class="noHayDatos">No se encontraron Subtemas registrados</span>
+}
+
+

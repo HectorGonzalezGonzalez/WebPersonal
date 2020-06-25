@@ -1,0 +1,126 @@
+﻿.accordion-container {
+    width: 100%;
+    border-bottom: 1px solid orange;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.accordion-titulo {    
+    display: inline-block;
+    width:90%;
+    padding: 10px 10px 10px 30px;        
+    color: #fff;
+    text-decoration: none;
+}
+
+    .accordion-titulo.open {
+        /*content: "-";*/
+        background: #230a0e url('/Content/img/icon_minus.png');
+        background-repeat: no-repeat;
+        background-position-x: 10px;
+        background-position-y: center;
+    }
+
+    .accordion-titulo:hover {        
+        color:#FFF;
+        text-decoration:none;
+    }
+
+.toggle-icon {
+    /*content: "+";*/
+    background: #76222f url('/Content/img/icon_plus.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position-x: 10px;
+    background-position-y: center;
+}
+
+
+
+    /*.accordion-titulo .toggle-icon {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 38px;
+        font-weight: bold;
+    }*/
+
+.accordion-content {
+    display: none;
+    padding: 5px;
+    width:100%;
+    background:#FFF;
+}
+    .accordion-content ul{
+        list-style:none;
+        padding:0px;
+    }
+
+    .div_arbol_der {
+        background: #76222f;
+        display: inline-block;
+        padding: 0px 10px;
+        width: 10%;
+        border-left: 1px solid orange;
+        text-align: center;
+    }
+.div_EjemDet{
+    padding-left:20px;    
+}    
+    .div_EjemDet li a{
+        color:green;
+    }
+    .section_principal {        
+        color: #fff;
+        padding: 5px;
+    }
+.section_principal h2 {    
+    text-align: center;
+}
+.LinkAddSubtena {
+    display: inline-block;
+    /*width: 100%;*/
+    padding: 10px 10px 10px 30px;
+    background: #76222f url(/Content/img/icon_plus.png);
+    background-repeat:no-repeat;    
+    background-position-y:center;
+    background-position-x:10px;    
+    border-bottom:1px solid orange;
+    margin-top:20px;
+    color:orange;
+    border-radius:0px 20px 0px 0px;
+}
+    .LinkAddSubtena:hover{
+        color:#FFF;
+        text-decoration:none;
+    }
+
+    .div_buscarArbol {
+        display: flex;
+        background: red;
+    }
+    .div_buscarArbol .div_txtBuscar{
+        width:70%;
+    }
+    .div_buscarArbol .div_btnBuscar {
+        width: 30%;
+    }
+
+.div_txtBuscar input[type="text"] {
+    width: 100%;
+    border-radius:inherit;
+    /*background: orange;*/
+}
+.div_btnBuscar input[type="submit"] {
+    width: 100%;
+    border-radius: inherit;
+}
+.noHayDatos {
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background: #76222f;
+    color:#FFF;
+}

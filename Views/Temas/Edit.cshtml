@@ -1,0 +1,51 @@
+﻿@model Models.Tema
+
+@{
+    Layout = null;
+}
+
+<h4>Edición del Tema</h4>
+
+@using (Html.BeginForm("Edit","Temas"))
+{
+    @Html.AntiForgeryToken()    
+    @Html.HiddenFor(x => x.Fecha_creo)
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.Label("Nombre del Tema:", new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control ControlPer" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Categoria:", new { @class = "control-label col-md-12" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoriaId", null, htmlAttributes: new { @class = "form-control ControlPer" })
+                @Html.ValidationMessageFor(model => model.CategoriaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Estatus:", new { @class = "control-label col-md-12" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Status)
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <input type="submit" value="Actualizar" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/JS/uploadFileValidate.js"></script>

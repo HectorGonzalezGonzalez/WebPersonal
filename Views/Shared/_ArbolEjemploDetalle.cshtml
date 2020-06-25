@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Models.EjemploDetalle>    
+<ul>    
+    @foreach (var item in Model)
+    {                        
+        <li>
+            @Ajax.ActionLink(item.Nombre, "ListaEjemploDetalle", "EjemploDetalles", new { @idEjemplo=item.EjemploId , @id = item.Id }, new AjaxOptions()
+       {
+           HttpMethod = "GET",
+           UpdateTargetId = "div_ejemplo",
+           InsertionMode = InsertionMode.Replace
+       })
+        </li>
+    }
+</ul>

@@ -1,0 +1,53 @@
+﻿@model Models.Subtema
+<h4>Edición Del Subtema</h4>
+
+@*@using (Ajax.BeginForm("Edit","Subtemas",new AjaxOptions() {
+        HttpMethod="POST",
+        UpdateTargetId= "div_arbol",
+        OnSuccess = "LimpiarDiv_ejemplo",
+        LoadingElementId = "divCargar"
+
+    }))*@
+<script src="~/JS/AjaxCrud/ajaxSubtemas.js"></script>
+
+@using (Html.BeginForm("Edit", "Subtemas", FormMethod.Post, new { id = "frm-alumno" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.TemaId)
+    @Html.HiddenFor(x => x.UsrCreoId)
+    @Html.HiddenFor(x => x.Fecha_creo)
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.Label("Subtema:", new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control ControlPer" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Estatus:", new { @class = "control-label col-md-12" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Status)
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+            <input type="submit" value="Actualizar" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
