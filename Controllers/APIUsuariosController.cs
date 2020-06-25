@@ -12,7 +12,8 @@ namespace WebPersonal.Controllers
     public class APIUsuariosController : ApiController
     {
         // GET: api/APIUsuarios
-        BusUsuarios busUsuario;        
+        BusUsuarios busUsuario;    
+        //prueba actualizado
         public APIUsuariosController()
         {
             busUsuario = new BusUsuarios();
